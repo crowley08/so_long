@@ -1,0 +1,11 @@
+Dans le développement de jeux 2D, les "tiles", les "tilesets", les "sprites" et les "sprite sheets" sont des éléments fondamentaux pour la création des niveaux, des personnages et des objets du jeu. Voici ce que chacun de ces termes signifie :
+
+1. **Tiles** : Les "tiles" sont de petits morceaux d'images utilisés pour construire des niveaux de jeu. Ils sont généralement de taille fixe et sont disposés en grilles pour former des décors, des sols, des murs, etc. Par exemple, dans un jeu de plateforme, chaque "tile" pourrait représenter une section de sol, une section de mur, une échelle, etc.
+
+2. **Tileset** : Un "tileset" est une collection d'images (ou de "tiles") regroupées dans une seule image ou dans un fichier spécifique. Chaque "tile" dans un "tileset" correspond à une partie de l'image qui sera utilisée pour construire le niveau du jeu. Les "tilesets" permettent aux développeurs de créer des environnements de jeu cohérents et esthétiquement agréables en utilisant un ensemble cohérent de "tiles".
+
+3. **Sprites** : Les "sprites" sont des images représentant des personnages, des objets ou d'autres éléments du jeu qui peuvent se déplacer ou interagir avec l'environnement. Par exemple, dans un jeu de plateforme, le personnage principal, les ennemis, les pièces de monnaie, etc., seraient tous représentés par des "sprites".
+
+4. **Sprite Sheet** : Une "sprite sheet" est une image unique contenant plusieurs "sprites" organisés en grille. Plutôt que de charger chaque "sprite" individuellement, les développeurs utilisent des "sprite sheets" pour optimiser les performances et la gestion des ressources. Une fois chargée en mémoire, la "sprite sheet" peut être découpée en "sprites" individuels en fonction des besoins du jeu.
+
+Pour utiliser ces éléments dans votre jeu en C avec SDL, vous pouvez charger les "tilesets" et les "sprite sheets" comme textures, puis découper ces textures en "tiles" ou en "sprites" individuels pour les afficher correctement à l'écran. Ensuite, vous pouvez utiliser ces "tiles" ou "sprites" pour construire les niveaux du jeu et animer les personnages et les objets.
