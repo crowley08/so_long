@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 02:42:50 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/24 15:59:04 by saandria         ###   ########.fr       */
+/*   Created: 2024/05/24 15:11:41 by saandria          #+#    #+#             */
+/*   Updated: 2024/05/24 15:58:24 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+void	*create_window(char **map, t_window w, void *mlx)
 {
-	t_window	w;
-	char	**map;
-	void	*img;
-	int		width;
-	int		height;
+	int			i;
+	int			j;
 
-	map = ft_map(argc, argv);
-	w.mlx = mlx_init();
-	w.win_mlx = create_window(map, w, w.mlx);
-	free_split(map);
-	img = mlx_xpm_file_to_image(w.mlx, "sprites/test.xpm", &width, &height);
-	mlx_put_image_to_window(w.mlx, w.win_mlx, img, 0, 0);
-	mlx_loop(w.mlx);
+	i = 0;
+	j = ft_strlen(map[i]);
+	while (map[i])
+		i++;
+	w.width = j * 64;
+	w.height = i * 64;
+	w.win_mlx = mlx_new_window(mlx, w.width, w.height, "so_long");
+	return (w.win_mlx);
 }

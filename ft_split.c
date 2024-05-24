@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 14:14:32 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/18 04:41:15 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/24 10:52:03 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static int	count_word(const char *s, char c)
 	return (count);
 }
 
-static int	count_char(const char *s, size_t i, char c)
+static int	count_char(const char *s, int i, char c)
 {
-	size_t	size;
+	int	size;
 
 	size = 0;
 	while (s[i] != c && s[i] != '\0')
@@ -46,9 +46,9 @@ static int	count_char(const char *s, size_t i, char c)
 	return (size);
 }
 
-static void	split_free(char **split, size_t j)
+static void	split_free(char **split, int j)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < j)
@@ -59,9 +59,9 @@ static void	split_free(char **split, size_t j)
 	free(split);
 }
 
-static char	**get_words(const char *s, char c, size_t i, char **split)
+static char	**get_words(const char *s, char c, int i, char **split)
 {
-	size_t	j;
+	int	j;
 	int		index;
 
 	j = 0;
@@ -89,7 +89,7 @@ static char	**get_words(const char *s, char c, size_t i, char **split)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
+	int	i;
 	char	**split;
 
 	split = malloc(sizeof(char *) * (count_word(s, c) + 1));

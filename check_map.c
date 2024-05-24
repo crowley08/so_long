@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 02:39:37 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/18 07:26:29 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/24 11:33:17 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 char	*read_map(int fd)
 {
 	static char	*map;
-	char		*buffer;
 	char		*true_map;
-	buffer = 0;
+
 	if (!fd)
 		return (NULL);
 	true_map = get_next_line(fd);
-	while (map = get_next_line(fd))
+	map = get_next_line(fd);
+	while (map)
 	{
+		map = get_next_line(fd);
 		true_map = ft_strjoin(true_map, map);
 		free(map);
 	}
-//	printf("%s\n", true_map);
+	printf("%s\n", true_map);
 	check_error_map(true_map);
 	return (true_map);
 }
@@ -73,7 +74,7 @@ char	**get_map(char *m)
 	return (map);
 }
 
-void	ft_map(int argc, char *argv[])
+char	**ft_map(int argc, char *argv[])
 {
 	int		fd;
 	char	*m;
@@ -92,10 +93,11 @@ void	ft_map(int argc, char *argv[])
 	i = 0;
 	while (map[i])
 	{
-		printf("%s\n", map[i]);
-		free(map[i]);
+	//	printf("%s\n", map[i]);
+	//free(map[i]);
 		i++;
 	}
-	free(map);
+	//free(map);
 	close (fd);
+	return (map);
 }
