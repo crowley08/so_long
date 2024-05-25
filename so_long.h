@@ -30,10 +30,11 @@ typedef struct s_coord
 
 typedef struct s_window
 {
-	void		*mlx;
-	void		*win_mlx;
-	int			width;
-	int			height;
+	void	*mlx;
+	void	*win_mlx;
+	void	*img;
+	int		width;
+	int		height;
 }			t_window;
 
 char	**ft_map(int argc, char *argv[]);
@@ -42,6 +43,7 @@ char	**get_map(char *m);
 void	check_error_map(char *map);
 void	*create_window(char **map, t_window w, void *mlx);
 void	free_split(char **spl);
+void	draw_map(char **maps, void *mlx, void *win_mlx, void *img);
 char	*read_map(int fd);
 
 #endif
