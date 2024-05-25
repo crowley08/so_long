@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   key_handle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 02:42:50 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/25 10:39:02 by saandria         ###   ########.fr       */
+/*   Created: 2024/05/25 09:44:44 by saandria          #+#    #+#             */
+/*   Updated: 2024/05/25 10:02:11 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+int	close_window(t_window *w)
 {
-	char	**maps;
-	t_window	w;
+	mlx_destroy_window(w->mlx, w->win_mlx);
+	mlx_destroy_display(w->mlx);
+	free(w->mlx);
+	exit(0);
+	return (0);
+}
 
-	w.mlx = mlx_init();
-	maps = ft_map(argc, argv);
-	w.win_mlx = create_window(maps, w, w.mlx);
-	init_assets(&w);
-	draw_map(maps, &w);
-	free_split(maps);
-	free_assets(&w);
-	mlx_key_hook(w.win_mlx, handle_key, &w);
-	mlx_hook(w.win_mlx, 17, 0, close_window, &w);
-	mlx_loop(w.mlx);
+int	handle_key(int keycode, t_window *w)
+{
+	if (keycode == 27 || keycode == 65307)
+		close_window(w);
+	return (0);
 }

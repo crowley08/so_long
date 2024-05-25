@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:11:41 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/24 15:58:24 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/25 10:54:50 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@ void	*create_window(char **map, t_window w, void *mlx)
 	return (w.win_mlx);
 }
 
-void	draw_map(char **maps, void *mlx, void *win_mlx, void *img)
+void	draw_map(char **maps, t_window *w)
 {
 	t_coord		map;
 	t_coord		image;
-	int			width;
-	int			height;
 
 	map.y = 0;
 	image.y = 0;
@@ -42,21 +40,25 @@ void	draw_map(char **maps, void *mlx, void *win_mlx, void *img)
 		image.x = 0;
 		while (maps[map.y][map.x]!= '\0')
 		{
-			if (maps[map.y][map.x] == '1')
-				img = mlx_xpm_file_to_image(mlx, "sprites/wallblue.xpm", &width, &height);
-			else if (maps[map.y][map.x] == 'C')
-				img = mlx_xpm_file_to_image(mlx, "sprites/Vente d esclaves icon.xpm", &width, &height);
-			else if (maps[map.y][map.x] == 'E')
-				img = mlx_xpm_file_to_image(mlx, "sprites/Luffys flag.xpm", &width, &height);
-			else if (maps[map.y][map.x] == 'P')
-				img = mlx_xpm_file_to_image(mlx, "sprites/luffy.xpm", &width, &height);
-			else if (maps[map.y][map.x] == '0')
-				img = mlx_xpm_file_to_image(mlx, "sprites/black.xpm", &width, &height);
-			mlx_put_image_to_window(mlx, win_mlx, img, image.x, image.y);
+			check_map_char(maps[map.y][map.x], w, image.x, image.y);
 			map.x += 1;
 			image.x += 64;
 		}
 		map.y += 1;
 		image.y += 64;
 	}
+}
+
+void	check_map_char(char c, t_window *w, int x, int y)
+{
+	if (c == '1')
+		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.wall, x, y);
+	else if (c == 'C')
+		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.coin, x, y);
+	else if (c == 'E')
+		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.exit, x, y);
+	else if (c == 'P')
+		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.player, x, y);
+	else if (c == '0')
+		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.ground, x, y);
 }
