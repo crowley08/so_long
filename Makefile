@@ -1,9 +1,9 @@
-SRCS 	= check_map.c ft_split.c main.c window.c utils.c key_handle.c
+SRCS 	= check_map.c ft_split.c main.c window.c utils.c key_handle.c move.c
 
 NAME	= so_long
 
 CC 	= gcc
-FLAGS	= -Wall -Wextra -Werror -g
+FLAGS	= -g
 MLX_FLAGS	= -L/home/saandria/42cursus/so_long/minilibx-linux -lmlx -lX11 -lXext -lm
 
 all:	$(NAME)

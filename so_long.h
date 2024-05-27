@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 02:40:00 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/25 10:54:19 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:10:26 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ typedef struct s_window
 	void	*mlx;
 	void	*win_mlx;
 	t_assets	img;
+	char	**maps;
+	int	score;
+	int	move;
 	int		width;
 	int		height;
 }			t_window;
@@ -57,6 +60,16 @@ void	free_assets(t_window *w);
 int		close_window(t_window *w);
 void	check_map_char(char c, t_window *w, int x, int y);
 int		handle_key(int keycode, t_window *w);
-
+int		get_player_y(char **maps);
+int		get_player_x(char **maps);
+void	move_right(t_window *w);
+void	move_left(t_window *w);
+void	move_down(t_window *w);
+void	move_up(t_window *w);
+void	check_char_before_move(t_window *w, char c);
+int	get_exit_y(char **maps);
+int	get_exit_x(char **maps);
+int	there_is_coin(t_window *w);
+void	display_exit(t_window *w);
 
 #endif

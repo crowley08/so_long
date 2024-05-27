@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 02:39:37 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/24 11:33:17 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/27 12:22:22 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*read_map(int fd)
 		return (NULL);
 	true_map = get_next_line(fd);
 	map = get_next_line(fd);
+	true_map = ft_strjoin(true_map, map);
+	free(map);
 	while (map)
 	{
 		map = get_next_line(fd);
@@ -28,7 +30,7 @@ char	*read_map(int fd)
 		free(map);
 	}
 	printf("%s\n", true_map);
-	check_error_map(true_map);
+//	check_error_map(true_map);
 	return (true_map);
 }
 

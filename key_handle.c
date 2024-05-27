@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:44:44 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/25 10:02:11 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:47:07 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,15 @@ int	close_window(t_window *w)
 
 int	handle_key(int keycode, t_window *w)
 {
-	if (keycode == 27 || keycode == 65307)
+	if (keycode == XK_Escape || keycode == 65307)
 		close_window(w);
+	if (keycode == XK_d || keycode == XK_D)
+		move_right(w);
+	if (keycode == XK_a || keycode == XK_A)
+		move_left(w);
+	if (keycode == XK_w || keycode == XK_W)
+		move_up(w);
+	if (keycode == XK_s || keycode == XK_S)
+		move_down(w);
 	return (0);
 }

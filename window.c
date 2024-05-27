@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:11:41 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/25 10:54:50 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:48:44 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	draw_map(char **maps, t_window *w)
 	{
 		map.x = 0;
 		image.x = 0;
-		while (maps[map.y][map.x]!= '\0')
+		while (maps[map.y][map.x] != '\0')
 		{
 			check_map_char(maps[map.y][map.x], w, image.x, image.y);
 			map.x += 1;
@@ -59,6 +59,26 @@ void	check_map_char(char c, t_window *w, int x, int y)
 		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.exit, x, y);
 	else if (c == 'P')
 		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.player, x, y);
-	else if (c == '0')
+	else if (c == '0' || c == 'E')
 		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.ground, x, y);
+//	if (there_is_coin(w) == 0)
+//		display_exit(w);
+}
+
+
+void	init_assets(t_window *w)
+{
+	w->img.coin = mlx_xpm_file_to_image(w->mlx, "sprites/Compass.xpm", &w->width, &w->height);
+	w->img.exit = mlx_xpm_file_to_image(w->mlx, "sprites/Luffys flag.xpm", &w->width, &w->height);
+	w->img.wall = mlx_xpm_file_to_image(w->mlx, "sprites/wallblue.xpm", &w->width, &w->height);
+	w->img.player = mlx_xpm_file_to_image(w->mlx, "sprites/sunny.xpm", &w->width, &w->height);
+	w->img.ground = mlx_xpm_file_to_image(w->mlx, "sprites/black.xpm", &w->width, &w->height);
+}
+void	free_assets(t_window *w)
+{
+	mlx_destroy_image(w->mlx, w->img.coin);
+	mlx_destroy_image(w->mlx, w->img.exit);
+	mlx_destroy_image(w->mlx, w->img.wall);
+	mlx_destroy_image(w->mlx, w->img.player);
+	mlx_destroy_image(w->mlx, w->img.ground);
 }
