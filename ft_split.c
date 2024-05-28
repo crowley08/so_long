@@ -62,7 +62,7 @@ static void	split_free(char **split, int j)
 static char	**get_words(const char *s, char c, int i, char **split)
 {
 	int	j;
-	int		index;
+	int	index;
 
 	j = 0;
 	index = -1;
@@ -89,7 +89,7 @@ static char	**get_words(const char *s, char c, int i, char **split)
 
 char	**ft_split(char const *s, char c)
 {
-	int	i;
+	int		i;
 	char	**split;
 
 	split = malloc(sizeof(char *) * (count_word(s, c) + 1));

@@ -59,7 +59,7 @@ void	check_map_char(char c, t_window *w, int x, int y)
 		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.exit, x, y);
 	else if (c == 'P')
 		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.player, x, y);
-	else if (c == '0' || c == 'E')
+	else if (c == '0')
 		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.ground, x, y);
 //	if (there_is_coin(w) == 0)
 //		display_exit(w);

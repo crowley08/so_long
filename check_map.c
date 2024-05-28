@@ -30,7 +30,7 @@ char	*read_map(int fd)
 		free(map);
 	}
 	printf("%s\n", true_map);
-//	check_error_map(true_map);
+	check_error_map(true_map);
 	return (true_map);
 }
 
@@ -46,7 +46,7 @@ void	check_error_map(char *map)
 	while (map && map[i])
 	{
 		if (map[i] != '1' && map[i] != '0' && map[i] != 'C'
-			 && map[i] != 'P' && map[i] != 'E' && map[i] != '\n')
+			&& map[i] != 'P' && map[i] != 'E' && map[i] != '\n')
 		{
 			write(1, "error", 5);
 			free(map);
@@ -70,7 +70,7 @@ void	check_error_map(char *map)
 char	**get_map(char *m)
 {
 	char	**map;
-	
+
 	map = ft_split(m, '\n');
 	free(m);
 	return (map);
@@ -88,18 +88,14 @@ char	**ft_map(int argc, char *argv[])
 		write(1, "error", 5);
 		exit (EXIT_FAILURE);
 	}
-
 	fd = open(argv[1], O_RDONLY);
 	m = read_map(fd);
 	map = get_map(m);
 	i = 0;
 	while (map[i])
 	{
-	//	printf("%s\n", map[i]);
-	//free(map[i]);
 		i++;
 	}
-	//free(map);
 	close (fd);
 	return (map);
 }

@@ -74,14 +74,11 @@ void	check_char_before_move(t_window *w, char c)
 	{
 		if (there_is_coin(w) == 0)
 		{
-			printf("\n\033[1;32m[YOU WIN]\033[0m\n");
+			printf("\n\033[1;32m[YOU WON]\033[0m\n");
 			close_window(w);
 		}
 		else
-		{
 			printf("\nthere is more coin\n");
-		//	draw_map(w->maps, w);
-		}
 	}
 }
 

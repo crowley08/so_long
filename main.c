@@ -20,8 +20,6 @@ int	main(int argc, char *argv[])
 	w.move = 0;
 	w.mlx = mlx_init();
 	w.maps = ft_map(argc, argv);
-//	printf("\n\033[1;91mX = [%d]\033[0m\n", get_player_x(w.maps));
-//	printf("\n\033[1;91mY = [%d]\033[0m\n", get_player_y(w.maps));
 	w.win_mlx = create_window(w.maps, w, w.mlx);
 	init_assets(&w);
 	draw_map(w.maps, &w);
