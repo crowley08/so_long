@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 02:39:37 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/27 12:22:22 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/28 08:10:53 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,41 +30,12 @@ char	*read_map(int fd)
 		free(map);
 	}
 	printf("%s\n", true_map);
-	check_error_map(true_map);
+	if (check_error_map(true_map) == 0) 
+	{
+		free(true_map);
+		ft_error();		
+	}
 	return (true_map);
-}
-
-void	check_error_map(char *map)
-{
-	int	i;
-	int	count_exit;
-	int	count_start;
-
-	i = 0;
-	count_exit = 0;
-	count_start = 0;
-	while (map && map[i])
-	{
-		if (map[i] != '1' && map[i] != '0' && map[i] != 'C'
-			&& map[i] != 'P' && map[i] != 'E' && map[i] != '\n')
-		{
-			write(1, "error", 5);
-			free(map);
-			exit (EXIT_FAILURE);
-		}
-		if (map[i] == 'E')
-			count_exit++;
-		if (map[i] == 'P')
-			count_start++;
-		i++;
-	}
-	printf("%s\n", map);
-	if (count_exit != 1 || count_start != 1)
-	{
-		write(1, "errorato", 8);
-		free(map);
-		exit (EXIT_FAILURE);
-	}
 }
 
 char	**get_map(char *m)
@@ -73,6 +44,7 @@ char	**get_map(char *m)
 
 	map = ft_split(m, '\n');
 	free(m);
+	check_error(map);
 	return (map);
 }
 

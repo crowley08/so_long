@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:26:08 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/27 15:18:40 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/28 07:04:13 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,14 +138,4 @@ int	get_exit_y(char **maps)
 		map.y += 1;
 	}
 	return (-1);
-}
-
-void	display_exit(t_window *w)
-{
-	t_coord	exit;
-
-	exit.x = get_exit_x(w->maps);
-	exit.y = get_exit_y(w->maps);
-	w->maps[exit.y][exit.x] = 'E';
-	mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.exit, (exit.x * 64), (exit.y *64));
 }

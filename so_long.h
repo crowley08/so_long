@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 02:40:00 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/27 15:10:26 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/28 08:10:02 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_window
 char	**ft_map(int argc, char *argv[]);
 char	**ft_split(char const *s, char c);
 char	**get_map(char *m);
-void	check_error_map(char *map);
+int	check_error_map(char *map);
 void	*create_window(char **map, t_window w, void *mlx);
 void	free_split(char **spl);
 void	draw_map(char **maps, t_window *w);
@@ -70,6 +70,10 @@ void	check_char_before_move(t_window *w, char c);
 int	get_exit_y(char **maps);
 int	get_exit_x(char **maps);
 int	there_is_coin(t_window *w);
-void	display_exit(t_window *w);
+void	check_error(char **map);
+int	same_line(char **map);
+int	is_sur_walls(char **map);
+int	is_rectangular(char **map);
+void	ft_error(void);
 
 #endif
