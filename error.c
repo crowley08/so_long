@@ -21,7 +21,7 @@ int	check_error_map(char *map)
 	i = 0;
 	count_exit = 0;
 	count_start = 0;
-	while (map[i])
+	while (map && map[i] != '\0')
 	{
 		if (map[i] != '1' && map[i] != '0' && map[i] != 'C'
 			&& map[i] != 'P' && map[i] != 'E' && map[i] != '\n')
