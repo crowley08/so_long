@@ -54,7 +54,7 @@ char	**ft_map(char *argv[])
 	char	**map;
 
 	fd = open(argv[1], O_RDONLY);
-	if (fd <= 0)
+	if (fd < 0)
 		ft_error(2);
 	m = read_map(fd);
 	map = get_map(m);
