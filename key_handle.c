@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:44:44 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/27 14:47:07 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:02:52 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	close_window(t_window *w)
 	mlx_destroy_window(w->mlx, w->win_mlx);
 	mlx_destroy_display(w->mlx);
 	free(w->mlx);
+	free_split(w->maps);
 	exit(0);
 	return (0);
 }

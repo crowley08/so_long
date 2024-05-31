@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 07:20:15 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/30 13:24:38 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:20:36 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	check_error_map(char *map)
 			return (0);
 		i++;
 	}
-	printf("%s\n", map);
 	if (count_exit != 1 || count_start != 1)
 		return (0);
 	return (1);
@@ -109,15 +108,19 @@ int	same_line(char **map)
 
 void	check_error(char **map)
 {
-	if (is_rectangular(map) == 0 || is_sur_walls(map) == 0 || same_line(map) == 0)
+	if (is_rectangular(map) == 0)
 	{
 		free_split(map);
-		ft_error();
+		ft_error(0);
 	}
-}
-
-void	ft_error(void)
-{
-	write(1, "Error\n", 6);
-	exit(EXIT_FAILURE);
+	if (is_sur_walls(map) == 0)
+	{
+		free_split(map);
+		ft_error(1);
+	}
+	if (same_line(map) == 0)
+	{
+		free_split(map);
+		ft_error(2);
+	}
 }

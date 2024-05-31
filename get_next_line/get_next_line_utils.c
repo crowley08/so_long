@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 10:02:53 by saandria          #+#    #+#             */
-/*   Updated: 2024/03/21 11:32:43 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:49:32 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,22 @@ char	*ft_substr(char const *s, int start, int len)
 	}
 	substr[i] = '\0';
 	return (substr);
+}
+
+int	ft_memcmp(const void *s1, const void *s2, int n)
+{
+	int				i;
+	unsigned char	*tmp1;
+	unsigned char	*tmp2;
+
+	i = 0;
+	tmp1 = (unsigned char *) s1;
+	tmp2 = (unsigned char *) s2;
+	while (i < n)
+	{
+		if (tmp1[i] != tmp2[i])
+			return ((int)(tmp1[i] - tmp2[i]));
+		i++;
+	}
+	return (0);
 }

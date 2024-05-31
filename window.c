@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:11:41 by saandria          #+#    #+#             */
-/*   Updated: 2024/05/28 10:29:57 by saandria         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:48:05 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	*create_window(char **map, t_window w, void *mlx)
 	j = ft_strlen(map[i]);
 	while (map[i])
 		i++;
-	w.width = j * 32;
-	w.height = i * 32;
-	w.win_mlx = mlx_new_window(mlx, w.width, w.height, "so_long");
+	w.w = j * 32;
+	w.h = i * 32;
+	w.win_mlx = mlx_new_window(mlx, w.w, w.h, "so_long");
 	return (w.win_mlx);
 }
 
@@ -32,6 +32,7 @@ void	draw_map(char **maps, t_window *w)
 	t_coord		map;
 	t_coord		image;
 
+	init_assets(w);
 	map.y = 0;
 	image.y = 0;
 	while (maps[map.y] != NULL)
@@ -47,6 +48,7 @@ void	draw_map(char **maps, t_window *w)
 		map.y += 1;
 		image.y += 32;
 	}
+	free_assets(w);
 }
 
 void	check_map_char(char c, t_window *w, int x, int y)
@@ -63,15 +65,15 @@ void	check_map_char(char c, t_window *w, int x, int y)
 		mlx_put_image_to_window(w->mlx, w->win_mlx, w->img.ground, x, y);
 }
 
-
 void	init_assets(t_window *w)
 {
-	w->img.coin = mlx_xpm_file_to_image(w->mlx, "sprites-32px/ch.xpm", &w->width, &w->height);
-	w->img.exit = mlx_xpm_file_to_image(w->mlx, "sprites-32px/Pirates.xpm", &w->width, &w->height);
-	w->img.wall = mlx_xpm_file_to_image(w->mlx, "sprites-32px/ground.xpm", &w->width, &w->height);
-	w->img.player = mlx_xpm_file_to_image(w->mlx, "sprites-32px/lu.xpm", &w->width, &w->height);
-	w->img.ground = mlx_xpm_file_to_image(w->mlx, "sprites-32px/black.xpm", &w->width, &w->height);
+	w->img.coin = mlx_xpm_file_to_image(w->mlx, "s-32/ch.xpm", &w->w, &w->h);
+	w->img.exit = mlx_xpm_file_to_image(w->mlx, "s-32/P.xpm", &w->w, &w->h);
+	w->img.wall = mlx_xpm_file_to_image(w->mlx, "s-32/g.xpm", &w->w, &w->h);
+	w->img.player = mlx_xpm_file_to_image(w->mlx, "s-32/lu.xpm", &w->w, &w->h);
+	w->img.ground = mlx_xpm_file_to_image(w->mlx, "s-32/bl.xpm", &w->w, &w->h);
 }
+
 void	free_assets(t_window *w)
 {
 	mlx_destroy_image(w->mlx, w->img.coin);
