@@ -4,7 +4,7 @@ NAME	= so_long
 
 CC 	= gcc
 FLAGS	= -Wall -Werror -Wextra -g
-MLX_FLAGS	= -L/home/saandria/42cursus/so_long/minilibx-linux -lmlx -lX11 -lXext -lm
+MLX_FLAGS	= -L./minilibx-linux -lmlx -lX11 -lXext -lm
 
 all:	$(NAME)
 $(NAME):	
